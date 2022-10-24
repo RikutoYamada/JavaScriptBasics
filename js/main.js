@@ -1,31 +1,23 @@
 'use strict';
 {
-  class Post {
-    constructor(text) {
-      this.text = text; 
-      this.likeCount = 0;
-    }
-    show() {
-      console.log(`${this.text} - ${this.likeCount}likes`);
-    }
-    
-    like() {
-      this.likeCount++;
-      this.show();
-    }
-    
-    // this使えない
-    static showInfo() {
-      console.log('Post');
-    }
-  }
+  const open = document.getElementById('open')
+  const close = document.getElementById('close')
+  const modal = document.getElementById('modal')
+  const mask = document.getElementById('mask')
+  
+  open.addEventListener('click', () => {
+    modal.classList.remove('hidden');
+    mask.classList.remove('hidden');
+  });
 
-  const posts = [
-    new Post('stding JavaScript'),
-    new Post('programing'),
-  ]
-  // posts[0].like();
-  // posts[0].show();
-  // posts[1].show();
-  Post.showInfo();
+  close.addEventListener('click', () => {
+    modal.classList.add('hidden');
+    mask.classList.add('hidden');
+  });
+
+  mask.addEventListener('click', () => {
+    // modal.classList.add('hidden');
+    // mask.classList.add('hidden');
+    close.click();
+  });
 }
