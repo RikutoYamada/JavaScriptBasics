@@ -1,49 +1,98 @@
 body {
-  font-size: 14px;
+  margin: 0;
+  font-family: Verdana, sans-serif;  
 }
 
-#open, #close {
+header {
+  display: flex;
+  padding: 0 16px;
+}
+
+header h1 {
+  margin: 0;
+  font-size: 22px;
+  line-height: 64px;
+}
+.sp-menu {
+  margin-left: auto;
+}
+
+.sp-menu #open {
+  font-size: 32px;
+  line-height: 64px;
   cursor: pointer;
-  width: 200px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  text-align: center;
-  padding: 12px 0;
-  margin: 16px auto 0;
 }
 
-#mask {
-  background: rgba(0, 0, 0, 0.4);
+.sp-menu #open.hide {
+  display: none;
+}
+
+main {
+  padding: 0 16px;
+}
+
+.overlay {
   position: fixed;
   top: 0;
   bottom: 0;
   right: 0;
   left: 0;
-  z-index: 1;
+  background: rgba(255, 255, 255, 0.95);
+  text-align: center;
+  padding: 64px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .6s;
 }
 
-#modal {
-  background: #fff;
-  width: 300px;
-  padding: 20px;
-  border-radius: 4px;
+.overlay.show {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.overlay #close {
   position: absolute;
-  top: 40px;
-  left: 0;
-  right: 0;
-  margin: 0 auto;
-  transition: transform 0.4s;
-  z-index: 2;
+  top: 16px;
+  right: 16px;
+  font-size: 32px;
+  cursor: pointer;
 }
 
-#modal > p {
-  margin: 0 0 20px;
+.overlay ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
 }
 
-#mask.hidden {
+.overlay li {
+  margin-top: 24px;
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity .3s, transform .3s;
+}
+
+.overlay.show li {
+  opacity: 1;
+  transform: none;
+}
+
+.overlay.show li:nth-child(1) {
+  transition-delay: .1s;
+}
+
+.overlay.show li:nth-child(2) {
+  transition-delay: .2s;
+}
+
+.overlay.show li:nth-child(3) {
+  transition-delay: .3s;
+}
+
+.pc-menu {
   display: none;
 }
-
-#modal.hidden {
-  transform: translate(0, -500px);
+@media (min-width: 600px) {
+  .pc-menu {
+    display: block;
+  }
 }

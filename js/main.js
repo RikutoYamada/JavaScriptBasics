@@ -1,23 +1,16 @@
 'use strict';
 {
-  const open = document.getElementById('open')
+  const open = document.getElementById('open');
+  const overlay = document.querySelector('.overlay');
   const close = document.getElementById('close')
-  const modal = document.getElementById('modal')
-  const mask = document.getElementById('mask')
-  
+
   open.addEventListener('click', () => {
-    modal.classList.remove('hidden');
-    mask.classList.remove('hidden');
+    overlay.classList.add('show');
+    open.classList.add('hide');
   });
 
   close.addEventListener('click', () => {
-    modal.classList.add('hidden');
-    mask.classList.add('hidden');
-  });
-
-  mask.addEventListener('click', () => {
-    // modal.classList.add('hidden');
-    // mask.classList.add('hidden');
-    close.click();
+    overlay.classList.remove('show');
+    open.classList.remove('hide');
   });
 }
